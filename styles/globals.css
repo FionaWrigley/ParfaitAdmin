@@ -14,3 +14,24 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.dark {
+  background: rgba(111,19,82,1);
+  /* background: linear-gradient(90deg, rgba(111,19,82,1) 0%, rgba(72,31,124,1) 100%);  */
+}
+
+.light {
+    background:#97ace0;
+    /* background: linear-gradient(90deg, #97ace0 0%, #deb7c7 100%); */
+    
+}
+
+/* Toggle Dark Mode */
+input:checked ~ .dot {
+  transform: translateX(100%);
+} 
+
+input:-webkit-autofill
+{
+ -webkit-text-fill-color: black !important;
+}
