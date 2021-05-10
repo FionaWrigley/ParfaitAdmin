@@ -14,7 +14,6 @@ export default function Home() {
       <main>
         <h1 className='bg-pink-200'>
           Parfait</h1>
-
       </main>
     </div>
   )
