@@ -10,20 +10,29 @@ module.exports = {
         secondaryDark: '#481f7c',
         pinkish: '#e5d1f0'
         }),
-      
-      minWidth: {
+
+        extend: {
+        minWidth: {
           '1200' : '1200px',
           '3/4': '75%',
           'full': '100%'
       },
       width: {
-        '15' : '5em'
+        'active' : '5em',
+        'search' : '22em'
       }
+    }
+      
 
     },
 
   variants: {
-    extend: {},
+    extend: {
+
+      
+
+
+    },
   },
   plugins: [],
 }

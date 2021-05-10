@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useDebounce from '../components/useDebounce';
 
 const  useradmin = () => {
 
@@ -6,10 +7,23 @@ const  useradmin = () => {
     const [ready, setReady] = useState(false);
     const [searchVal, setSearchVal] = useState('*');
     const [hasChanged, setHasChanged] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
+    const debouncedSearchTerm = useDebounce(searchVal, 800);
     let counter = 1;
 
     useEffect(() => {
-        fetch(process.env.parfaitServer+'/userlist/'+searchVal, {
+
+        if(searchVal === "")
+        {
+            setSearchVal('*');
+        }
+        if (debouncedSearchTerm && !isSearching) {
+      
+         
+            console.log('in here')
+            setIsSearching(true); //while searching - no other requests should be made
+
+        fetch(process.env.parfaitServer+'/userlist/'+debouncedSearchTerm, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include'
@@ -25,12 +39,14 @@ const  useradmin = () => {
                   res.json()
                       .then((data) => {
                         setMembers(data);
+                        setIsSearching(false);
                         setHasChanged(false);
                     })
                   }})
                   
             .catch(err => console.log("Oops: "+err));
-    },[searchVal, hasChanged])
+                }
+    },[debouncedSearchTerm, hasChanged])
 
     const updateActiveFlag = (id, active) => {
         
@@ -98,8 +114,10 @@ const  useradmin = () => {
               <div className="bg-gray-50 col-start-3 row-start-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block lg:block">
                 Role
               </div>
-              <div className="bg-gray-50 col-start-4 row-start-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block lg:block">
-                <span className="sr-only">Edit</span>
+              <div className="text-center bg-gray-50 lg:col-start-4 md:col-start-4 col-start-1 lg:col-span-1 md:col-span-1 col-span-4 row-start-1 px-2 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider md:block lg:block">
+                <input className="border-2 border-gray-300 bg-white dark:bg-gray-200 h-10 px-1 w-search rounded-lg text-sm focus:outline-none"
+          type="search" name="search" placeholder="Search"
+          onChange={e => setSearchVal(e.target.value)} />
               </div>
             {members.map((member, index) => <> <div className="hidden">{counter++}</div>
               <div className={`text-left col-start-1 row-start-${counter} md:px-6 md:py-4 lg:px-6 lg:py-4 px-2 py-2 whitespace-nowrap`}>
@@ -122,7 +140,7 @@ const  useradmin = () => {
               </div>
               <div className={`text-left col-start-2 row-start-${counter} md:px-6 lg:px-6 px-2 py-5 whitespace-nowrap`}>
                 
-                <span className={`px-2 inline-flex text-xs w-15 leading-5 font-semibold rounded-full ${member.activeFlag === 1 ? 'bg-green-100 text-green-800' : 'bg-gray-300 text-gray-800' }`}>
+                <span className={`px-2 inline-flex text-xs w-active leading-5 font-semibold rounded-full ${member.activeFlag === 1 ? 'bg-green-100 text-green-800' : 'bg-gray-300 text-gray-800' }`}>
                 {member.activeFlag === 1 ? 'Active' : 'Inactive'}
                 </span>
               </div>
