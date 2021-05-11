@@ -1,8 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useRouter } from 'next/router';
+import {useEffect } from 'react'
 
 export default function Home() {
+
+  const router = useRouter();
+
+  useEffect(() => {
+
+  router.push('/login');
+
+  },[]);
+
   return (
     <div>
       <Head>
@@ -11,10 +22,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className='bg-pink-200'>
-          Parfait</h1>
-      </main>
+     
+
     </div>
   )
 }

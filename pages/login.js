@@ -31,7 +31,7 @@ const login = (props) => {
                               setErrorMessage("Invalid username or password");
                              break;
                          case 403:
-                            //push a forbidden error page
+                            setErrorMessage("YOU ARE NOT AUTHORISED TO USE ADMIN PANEL")
                             break;
                          case 422: 
                              router.push('/login');

@@ -8,11 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "next": "10.2.0",
     "next-themes": "0.0.14",
     "react": "17.0.2",
+    "react-confirm-alert": "^2.7.0",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.4.2"
+    "react-hook-form": "^7.4.2",
+    "react-swipeable-list": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
