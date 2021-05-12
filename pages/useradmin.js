@@ -28,7 +28,9 @@ const  useradmin = () => {
 
         fetch(process.env.parfaitServer+'/userlist/'+debouncedSearchTerm, {
             method: 'GET',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+          },
             credentials: 'include'
         }).then((res) => {
           switch (res.status) {
@@ -121,7 +123,9 @@ const  useradmin = () => {
 
     fetch(process.env.parfaitServer+url, {
         method: 'GET',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+      },
         credentials: 'include'
     }).then((res) => {
       switch (res.status) {
@@ -142,7 +146,7 @@ const  useradmin = () => {
             const logOut = () => {
                 fetch(process.env.parfaitServer+'/logout', {
                     method: 'GET',
-                    headers: {'Content-Type': 'application/json; charset=utf-8'},
+                     headers: {'Content-Type': 'application/json; charset=utf-8'},
                     credentials: 'include'
                 }).then((res) => {
                         if(res.status == 204){
