@@ -23,7 +23,7 @@ const  useradmin = () => {
         }
         if (debouncedSearchTerm && !isSearching) {
       
-            console.log('in here')
+         
             setIsSearching(true); //while searching - no other requests should be made
 
         fetch(process.env.parfaitServer+'/userlist/'+debouncedSearchTerm, {
@@ -197,8 +197,22 @@ const  useradmin = () => {
               <div className={`text-left col-start-1 row-start-auto lg:row-start-${counter} md:px-6 md:py-4 lg:px-6 lg:py-4 px-2 py-2 whitespace-nowrap`}>
                 <div className="flex items-center">
                   <div className="flex-shrink-0 h-10 w-10">
-                    <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="" />
-                  </div>
+                    {member.profilePicPath === "" ? 
+                      <span className="inline-block h-10 w-10 rounded-full overflow-hidden bg-gray-100">
+                      <svg
+                          className="h-full w-full text-gray-300"
+                          fill="currentColor"
+                          viewBox="0 0 24 24">
+                              <path
+                              d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/> 
+                      </svg> 
+                  </span>:
+                  
+                  
+                  
+                    <img className="h-10 w-10 rounded-full" src={member.profilePicPath} alt="" />
+            }
+                    </div>
                   <div className="md:ml-4 lg:ml-4 ml-2">
                     <div className="text-sm font-medium text-gray-900">
                       {member.fname} {member.lname}
