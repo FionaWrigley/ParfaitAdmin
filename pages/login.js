@@ -41,7 +41,7 @@ const login = (props) => {
                      }).catch(err => {
 
                          setErrorMessage("Oops, we are currently experiencing problem, please try again later")
-                //         console.log("Oops: "+err)
+            
                      });
              }
 
