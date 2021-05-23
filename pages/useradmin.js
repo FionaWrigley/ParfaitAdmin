@@ -76,7 +76,7 @@ const  useradmin = () => {
     const deleteUser = (id, fname, lname) => {
 
       const warningMsg = 'Are you sure you want to delete member '+id+': '+ fname + ' '+lname+ '? All of their data will be permanently removed. This action cannot be undone.';
-      // if(confirm(warningMsg)){
+     
 
         let urlstr = '/deletemember/'+id;
         
@@ -154,9 +154,23 @@ const  useradmin = () => {
                         }
                     }).catch(err => console.log("Oops: "+err));
             }
+
+
     return (
 
-        <div>
+        
+         <div className = "m-0 p-0">
+           <div className = "w-full md:w-auto fixed md:absolute  lg:absolute lg:ml-2 md:ml-2 -left-0 lg:top-2 md:top-2 -bottom-1">
+          <button className="bg-gray-800 md:w-auto lg:w-auto hover:bg-blue-dark text-white font-bold py-2 px-4 hover:bg-gray-800 lg:rounded md:rounded w-1/2"
+            onClick={() => router.push('/useradmin')}>
+            User Admin
+          </button>
+          <button className="bg-gray-700 md:w-auto lg:w-auto lg:ml-2 md:ml-2 hover:bg-blue-dark text-white font-bold py-2 px-4 hover:bg-gray-800 lg:rounded md:rounded w-1/2"
+            onClick={() => router.push('/sessions')}>
+            Session Admin
+          </button>
+          
+        </div>
             <button className="bg-gray-700 absolute mr-2 -right-0 top-2 hover:bg-blue-dark text-white font-bold py-2 px-4 hover:bg-gray-800 rounded"
             onClick={logOut}>
     Log out
@@ -165,15 +179,15 @@ const  useradmin = () => {
                     <img className="mx-auto md:h-20 lg:h-20 w-auto h-10"
                         src="/images/logo.svg" alt="Workflow"/>
                     <h2 className="mt-3 md:mt-6 lg:mt-6 text-center text-xl lg:text-3xl md:text-3xl font-extrabold text-indigo-800 dark:text-white">
-                        Admin.
+                        User Admin.
                     </h2>
                 </div>
 
 <div className="flex flex-col sm:mx-4 lg:mx-8 my-4">
   <div className="text-center -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div className="py-2  align-middle inline-block min-w-full md:min-w-3/4 lg:min-w-3/4 sm:px-6 lg:px-8">
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <div className="bg-white divide-y divide-gray-200 grid lg:grid-col-4 md:grid-col-4 grid-col-3 min-w-full divide-y divide-gray-200">
+      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg lg:mb-0 md:mb-0 mb-5">
+        <div className="bg-white divide-y divide-gray-200 grid lg:grid-col-4  md:grid-col-4 grid-col-3 min-w-full divide-y divide-gray-200">
           <div className="ml-20 bg-gray-50 col-start-1 row-start-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:block lg:block">
                 Name
            </div>
@@ -207,9 +221,6 @@ const  useradmin = () => {
                               d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/> 
                       </svg> 
                   </span>:
-                  
-                  
-                  
                     <img className="h-10 w-10 rounded-full" src={member.profilePicPath} alt="" />
             }
                     </div>
