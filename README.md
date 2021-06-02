@@ -1,26 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Live demo
+# Parfait Admin
 
-Live demo can be view at https://parfait-admin.vercel.app. However, you will need a parfait account, admin privileges, and whitelisted IP address to use this service.
+Parfait is a social, schedule sharing app which allows friends and family to view each other’s schedules to find available free space that suits the whole crew. 
 
-## Prerequisites
+Parfait admin is a management tool for the administraton of Parfait users and sessions
+## Authors
 
-Alternately, the solution can be installed locally. Before installing the admin panel, you will require the following services to be set up
+[@FionaWrigley](https://github.com/FionaWrigley)
+
+  
+## Roadmap
+
+- Usages statistic graphs
+- Group maintenance
+- Event maintenance
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your next.config.js file
+
+`parfaitServer` 
+
+## Demo
+
+https://parfait-admin.vercel.app/
+
+  
+## Tech Stack
+
+**Client:** 
+- NextJS 10.2.0
+- React 17.0.2
+- TailwindCSS 2.1.2
+
+**Server:** 
+- Node v12.19.0
+- Express 4.17.1
+- Apache 2.4.41
+- MySQL 8.0.18
+
+
+## Additional technologies
+  
+  - Font Awesome -
+      Provides free icons for navigation
+  - Next themes -
+      Used for dark mode    
+  - React-confirm-alert -
+      Confirmation window
+  - React hook form -
+      Input forms  
+## Features
+
+- Light/dark mode toggle
+- Mobile mode
+- Cross platform
+
+  
+## Run Locally
+
+Before installing the Parfait Admin Panel, you will require the following services to be set up
 
 Parfait database and API - please see the following repo for steps
 https://github.com/FionaWrigley/ParfaitBackEnd/
 
-## Getting Started
 
-Installing the admin panel on your local host
+## Getting Started on your local machine
 
-Update next.config.js file environment variable to point at your local server
+Clone the project
 
-parfaitServer: 'http://localhost:5000'
+```bash
+  git clone https://github.com/FionaWrigley/ParfaitAdmin/
+```
 
-Run npm install
+Go to the project directory
 
-Run npm run dev
+```bash
+  cd ParfaitAdmin/parfait_admin
+```
 
-Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+Install dependencies
+
+```bash
+  npm install
+```
+
+Update next.config.js file
+
+- Set environment parfaitServer to point at your local api
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+  
